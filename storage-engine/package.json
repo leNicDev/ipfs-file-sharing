@@ -1,0 +1,23 @@
+{
+  "name": "storage-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "author": "leNicDev",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  },
+  "dependencies": {
+    "go-ipfs-dep": "^0.4.13",
+    "ipfsd-ctl": "^0.28.0",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-logger": "^3.1.0",
+    "koa-router": "^7.4.0"
+  }
+}
