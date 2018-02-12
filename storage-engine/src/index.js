@@ -20,7 +20,7 @@ app.use(koaBody({ multipart: true }));
 // Routes
 router
   .post('/add', add)
-  .get('/get/:hash', get);
+  .get('/get/:hash/:filename', get);
 
 // Register routes
 app.use(router.routes());
@@ -56,7 +56,7 @@ async function get(ctx) {
   const file = await ipfs.get(ctx.params.hash);
 
   ctx.set('Content-Type', 'application/octet-stream');
-  ctx.set('Content-Disposition', 'attachment;filename=file.txt');
+  ctx.set('Content-Disposition', 'attachment;filename=' + ctx.params.filename);
   ctx.set('Content-Transfer-Encoding', 'binary');
   ctx.set('Accept-Ranges', 'bytes');
   ctx.set('Cache-Control', 'private');
