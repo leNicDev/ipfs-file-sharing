@@ -1,6 +1,7 @@
 const logger = require('koa-logger');
 const koaBody = require('koa-body');
 const router = require('koa-router')();
+const cors = require('koa2-cors');
 const Koa = require('koa');
 const app = new Koa();
 
@@ -25,9 +26,15 @@ router
 // Register routes
 app.use(router.routes());
 
+// CORS
+app.use(cors({
+  origin: '*',
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept']
+}));
+
 // Start server
-app.listen(3000);
-console.log('listening on port 3000');
+app.listen(4000);
+console.log('listening on port 4000');
 
 
 // ---------- //
@@ -36,6 +43,8 @@ console.log('listening on port 3000');
 
 // Add file
 async function add(ctx) {
+  console.log('Adding file');
+
   const files = ctx.request.body.files;
 
   for (key in files) {
