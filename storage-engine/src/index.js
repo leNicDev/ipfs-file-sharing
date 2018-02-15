@@ -1,40 +1,33 @@
-const logger = require('koa-logger');
-const koaBody = require('koa-body');
-const router = require('koa-router')();
-const cors = require('koa2-cors');
-const Koa = require('koa');
-const app = new Koa();
+const fastify = require('fastify')();
+const cors = require('cors');
+const multipart = require('fastify-multipart');
 
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
+const concat = require('concat-stream');
 
 const ipfs = require('./ipfs');
 
 
-// log requests
-app.use(logger());
-
-// Parse body
-app.use(koaBody({ multipart: true }));
-
 // Routes
-router
-  .post('/add', add)
-  .get('/get/:hash/:filename', get);
-
-// Register routes
-app.use(router.routes());
+fastify.post('/add', add);
+fastify.get('/get/:hash/:filename', get);
 
 // CORS
-app.use(cors({
-  origin: '*',
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept']
-}));
+fastify.use(cors());
+
+// Add multipart support
+fastify.register(multipart);
 
 // Start server
-app.listen(4000);
-console.log('listening on port 4000');
+const start = async () => {
+  try {
+    await fastify.listen(3000);
+    fastify.log.info(`server listening on ${fastify.server.address().port}`);
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+};
+start();
 
 
 // ---------- //
@@ -42,36 +35,40 @@ console.log('listening on port 4000');
 // ---------- //
 
 // Add file
-async function add(ctx) {
-  console.log('Adding file');
+async function add(req, res) {
+  res.type('application/json').code(200);
 
-  const files = ctx.request.body.files;
+  const mp = req.multipart(handler, (err) => {
+    console.log('upload completed');
+    res.code(200).send();
+  });
 
-  for (key in files) {
-    const file = files[key];
+  function handler (field, file, filename, encoding, mimetype) {
+    file.pipe(concat(addToIpfs));
+  }
 
-    const reader = fs.createReadStream(file.path);
+  function addToIpfs(buffer) {
+    ipfs.add(buffer).then(afterIpfsAdd);
+  }
 
-    const result = await ipfs.add(reader);
-
-    ctx.body = result;
+  function afterIpfsAdd(data) {
+    console.log(`IPFS Data: ${JSON.stringify(data)}`);
   }
 }
 
 // Get file
-async function get(ctx) {
-  console.log('Ctx: ' + JSON.stringify(ctx));
+async function get(req, res) {
+  const file = await ipfs.get(req.params.hash);
 
-  const file = await ipfs.get(ctx.params.hash);
+  res.type('application/octet-stream').code(200);
+  res.header('Content-Type', 'application/octet-stream');
+  res.header('Content-Disposition', 'attachment;filename=' + req.params.filename);
+  res.header('Content-Transfer-Encoding', 'binary');
+  res.header('Accept-Ranges', 'bytes');
+  res.header('Cache-Control', 'private');
+  res.header('Pragma', 'private');
+  res.header('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT');
+  res.header('Content-Length', file.length);
 
-  ctx.set('Content-Type', 'application/octet-stream');
-  ctx.set('Content-Disposition', 'attachment;filename=' + ctx.params.filename);
-  ctx.set('Content-Transfer-Encoding', 'binary');
-  ctx.set('Accept-Ranges', 'bytes');
-  ctx.set('Cache-Control', 'private');
-  ctx.set('Pragma', 'private');
-  ctx.set('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT');
-  ctx.set('Content-Length', file.length);
-
-  ctx.body = file;
+  res.send(file);
 }

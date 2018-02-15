@@ -13,12 +13,11 @@
     "nodemon": "^1.14.12"
   },
   "dependencies": {
+    "concat-stream": "^1.6.0",
+    "cors": "^2.8.4",
+    "fastify": "^1.0.0-rc.1",
+    "fastify-multipart": "^0.4.1",
     "go-ipfs-dep": "^0.4.13",
-    "ipfsd-ctl": "^0.28.0",
-    "koa": "^2.5.0",
-    "koa-body": "^2.5.0",
-    "koa-logger": "^3.1.0",
-    "koa-router": "^7.4.0",
-    "koa2-cors": "^2.0.5"
+    "ipfsd-ctl": "^0.28.0"
   }
 }

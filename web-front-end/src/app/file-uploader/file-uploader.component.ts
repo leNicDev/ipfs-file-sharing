@@ -8,7 +8,7 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class FileUploaderComponent implements OnInit {
 
-  uploader: FileUploader = new FileUploader({ url: 'http://127.0.0.1:4000/add' });
+  uploader: FileUploader = new FileUploader({ url: 'http://127.0.0.1:3000/add' });
 
 
   constructor() { }
