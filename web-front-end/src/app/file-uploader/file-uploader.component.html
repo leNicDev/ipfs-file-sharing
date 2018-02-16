@@ -1,2 +1,5 @@
-<input type="file" ng2FileSelect [uploader]="uploader" />
-<button type="button" (click)="upload()">Upload</button>
+<div class="file-input">
+    <input type="file" ng2FileSelect [uploader]="uploader" (change)="onFileChange()" />
+    <span class="button">Choose</span>
+    <label class="label" data-js-label>{{ currentFileName }}</label>
+</div>

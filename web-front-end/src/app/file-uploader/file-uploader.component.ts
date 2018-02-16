@@ -23,4 +23,18 @@ export class FileUploaderComponent implements OnInit {
     this.uploader.uploadAll();
   }
 
+
+  onFileChange() {
+    this.upload();
+  }
+
+
+  get currentFileName(): string {
+    if (this.uploader.queue.length < 1) {
+      return 'No file selected';
+    }
+
+    return this.uploader.queue[0].file.name;
+  }
+
 }

@@ -4,12 +4,14 @@ import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
+import { UploadFormComponent } from './upload-form/upload-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    UploadFormComponent
   ],
   imports: [
     BrowserModule,
