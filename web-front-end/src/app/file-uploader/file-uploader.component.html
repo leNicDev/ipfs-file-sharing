@@ -1,5 +1,23 @@
-<div class="file-input">
-    <input type="file" ng2FileSelect [uploader]="uploader" (change)="onFileChange()" />
-    <span class="button">Choose</span>
+<div class="file-input-container" [hidden]="_uploading">
+  <div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+    <h1>Drag &amp; Drop</h1>
+  </div>
+
+  <div class="file-input">
+    <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+    <button type="button" class="button-choose">Choose</button>
     <label class="label" data-js-label>{{ currentFileName }}</label>
+  </div>
+
+  <button type="button" class="button-upload" (click)="startUpload()">Upload</button>
+</div>
+
+<div class="upload-info" *ngIf="_uploading">
+  <h2>Uploading...</h2>
+
+  <ipfs-progressbar [value]="progress"></ipfs-progressbar>
+  <div class="upload-speed">
+    <span>{{ progress }}%</span>
+    <span>{{ speed }}</span>
+  </div>
 </div>

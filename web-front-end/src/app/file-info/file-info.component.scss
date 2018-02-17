@@ -1,0 +1,66 @@
+.file-info-wrapper {
+  width: 50%;
+  margin: 30vh auto 0 auto;
+  border-radius: 3px;
+}
+
+.file-info-header {
+  position: relative;
+  border-radius: 3px 3px 0 0;
+  padding: 20px 40px;
+  background: linear-gradient(to right, #732b69, #720437);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color: #ffffff;
+  z-index: 2;
+
+  .file-info-icon {
+    margin-right: 5px;
+  }
+
+  .load {
+    font-weight: 300;
+  }
+}
+
+.file-info-body {
+  padding: 15px;
+  background: #ffffff;
+}
+
+.file-hash {
+  font-family: monospace;
+  font-size: 1.2em;
+}
+
+.info.grid {
+  grid-template-columns: 20% 70%;
+}
+
+.actions {
+  margin: 40px auto 10px auto;
+  text-align: center;
+}
+
+.download {
+  background: #890542;
+  padding: 15px 20px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background ease 200ms;
+  text-decoration: none;
+
+  &:hover {
+    background: #7a043a;
+  }
+}
+
+.download.public {
+  background: transparent;
+  color: #636363;
+  transition: color ease 200ms;
+
+  &:hover {
+    color: #191919;
+  }
+}

@@ -1,26 +1,27 @@
 .wrapper {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    background-image: url(/assets/images/background.png);
-    background-position: bottom;
-    animation: 10s linear 0s infinite bp;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    will-change: background-position;
+  background-image: url(/assets/images/background.png);
+  background-position: bottom;
+  animation: 10s linear 0s infinite bp;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: background-position;
 }
 
 @keyframes bp {
-    from {
-        background-position:  400px 0;
-    }
-    
-    to {
-        background-position:  0 400px;
-    }
+  from {
+    background-position:  400px 0;
+  }
+
+  to {
+    background-position:  0 400px;
+  }
 }
 
 main {
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 }

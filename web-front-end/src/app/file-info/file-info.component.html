@@ -1,0 +1,22 @@
+<div class="file-info-wrapper">
+  <div class="file-info-header">
+    <h2>
+      <i class="{{ fileExtension | faFileIcon }} file-info-icon"></i>
+      <span class="up">{{ fileName }}</span><span class="load">.{{ fileExtension }}</span>
+    </h2>
+  </div>
+
+  <div class="file-info-body">
+    <div class="info grid justify-space-between">
+      <span>Hash:</span>
+      <span class="file-hash">{{ _hash }}</span>
+      <span>File name:</span>
+      <span class="file-name">{{ fileName }}</span>
+    </div>
+
+    <div class="actions">
+      <a class="download" [href]="downloadLink" target="_blank">Download</a>
+      <a class="download public" [href]="publicDownloadLink" target="_blank">Download from ipfs.io</a>
+    </div>
+  </div>
+</div>

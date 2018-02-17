@@ -1,44 +1,69 @@
 .file-input {
-    display: inline-block;
-    text-align: left;
-    background: #fff;
-    padding: 16px;
-    width: 450px;
-    position: relative;
-    border-radius: 3px;
+  display: inline-block;
+  text-align: left;
+  background: #fff;
+  padding: 16px;
+  width: 450px;
+  position: relative;
+  border-radius: 3px;
+}
+
+.file-input > [type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.file-input > .button-choose {
+  display: inline-block;
+  cursor: pointer;
+  background: #eee;
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.file-input:hover > .button {
+  background: dodgerblue;
+  color: white;
+}
+
+.file-input > .label {
+  color: #333;
+  white-space: nowrap;
+  opacity: .3;
+}
+
+.file-input.-chosen > .label {
+  opacity: 1;
+}
+
+.button-upload {
+  display: inline-block;
+  cursor: pointer;
+  background: #eee;
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.upload-info {
+  width: 100%;
+}
+
+// Upload speed
+.upload-speed {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    color: #333333;
+    font-size: .7em;
   }
-  
-  .file-input > [type='file'] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 10;
-    cursor: pointer;
-  }
-  
-  .file-input > .button {
-    display: inline-block;
-    cursor: pointer;
-    background: #eee;
-    padding: 8px 16px;
-    border-radius: 2px;
-    margin-right: 8px;
-  }
-  
-  .file-input:hover > .button {
-    background: dodgerblue;
-    color: white;
-  }
-  
-  .file-input > .label {
-    color: #333;
-    white-space: nowrap;
-    opacity: .3;
-  }
-  
-  .file-input.-chosen > .label {
-    opacity: 1;
-  }
+}

@@ -1,0 +1,16 @@
+button, input[type=button], input[type=submit] {
+  border: none;
+  cursor: pointer;
+  background-color: #eee;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+  font-size: 1em;
+  transition: background-color ease 150ms, color ease 150ms;
+
+  &:hover {
+    background-color: #720437 !important;
+    color: white;
+  }
+}

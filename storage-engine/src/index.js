@@ -39,8 +39,10 @@ async function add(req, res) {
   res.type('application/json').code(200);
 
   const mp = req.multipart(handler, (err) => {
-    console.log('upload completed');
-    res.code(200).send();
+    if (err) {
+      console.error(`Uploaded failed: ${JSON.stringify(err)}`);
+      return;
+    }
   });
 
   function handler (field, file, filename, encoding, mimetype) {
@@ -52,7 +54,13 @@ async function add(req, res) {
   }
 
   function afterIpfsAdd(data) {
-    console.log(`IPFS Data: ${JSON.stringify(data)}`);
+    let response = [];
+
+    for (let i = 0; i < data.length; i++) {
+      response.push(data[i].hash);
+    }
+
+    res.code(200).send(response);
   }
 }
 

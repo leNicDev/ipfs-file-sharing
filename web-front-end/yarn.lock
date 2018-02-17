@@ -2440,10 +2440,6 @@ follow-redirects@1.0.0:
   dependencies:
     debug "^2.2.0"
 
-fontawesome@^4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/fontawesome/-/fontawesome-4.7.2.tgz#7f0c72ac7a6b029d3375bacb23522d9acfc50a52"
-
 for-in@^0.1.3:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-0.1.8.tgz#d8773908e31256109952b1fdb9b3fa867d2775e1"
@@ -3728,10 +3724,6 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
-koa2-cors@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/koa2-cors/-/koa2-cors-2.0.5.tgz#3404712cd092f728c7f72de704ee7b920d957658"
-
 labeled-stream-splicer@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/labeled-stream-splicer/-/labeled-stream-splicer-2.0.0.tgz#a52e1d138024c00b86b1c0c91f677918b8ae0a59"
@@ -4274,9 +4266,9 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
-ng2-file-upload@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/ng2-file-upload/-/ng2-file-upload-1.3.0.tgz#d90f8f568f62383462175f8bdfa0096b131f277a"
+ngx-uploader@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/ngx-uploader/-/ngx-uploader-4.2.2.tgz#951329cc936fae212a453568ce37a302f94a2c9e"
 
 no-case@^2.2.0:
   version "2.3.2"
